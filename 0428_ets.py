@@ -1,5 +1,5 @@
 import xml.etree.ElementTree as ET
-#import regex as re
+import re
 
 
 tree= ET.parse('movies.xml')
@@ -42,11 +42,11 @@ for movie in root.iter("movie"):
     print(movie.attrib, movie.text)
 
 
-#for form in root.findall(" . / genre/ decade/movie/format"):
-# Search for the commas in the format text
-   # match = re.search(',' , form. text)
-    #if match:
-        #form. set('multiple' , 'Yes')
-   # else:
-       # form. set('multiple' ,'No')
+for form in root.findall("./genre/decade/movie/format"):
+    #Search for the commas in the format text
+    match = re.search(',', form.text)
+    if match:
+        form.set('multiple','Yes')
+    else:
+        form.set('multiple','No')
 
